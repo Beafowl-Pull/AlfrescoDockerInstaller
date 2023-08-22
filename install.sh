@@ -84,11 +84,14 @@ install_files_alfresco() {
     echo "Installing requirements..."
     install_requirements
     echo "Installing Alfresco files..."
+    user = $(whoami)
+    cd /home/$user
     mkdir alfresco
     cd alfresco
     sudo docker run -it -v $(pwd):/generated angelborroy/alfresco-installer
     sudo ./create_volumes.sh
     echo "Writing start.sh..."
+    sudo chmod +x start.sh
     write_start_sh
     sudo ./start.sh
 }
