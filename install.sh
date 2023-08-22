@@ -87,6 +87,7 @@ install_files_alfresco() {
     user = $(whoami)
     cd /home/$user
     mkdir alfresco
+    sudo chmod 777 alfresco
     cd alfresco
     sudo docker run -it -v $(pwd):/generated angelborroy/alfresco-installer
     sudo ./create_volumes.sh
